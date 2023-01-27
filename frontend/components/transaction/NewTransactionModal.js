@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import Modal from '../Modal'
-
+import { useCashApp } from '../../customhook'
 
 const NewTransactionModal = ({ modalOpen, setModalOpen }) => {
-    const [amount, setAmount] = useState(0)
+    const { amount, setAmount } = useCashApp()
+
     const [receiver, setReceiver] = useState('')
     const [transactionPurpose, setTransactionPurpose] = useState('')
 
     const onAmountInput = (e) => {
+        // setting the amount to pay
         e.preventDefault()
         const newAmount = e.target.value
 
@@ -20,10 +22,9 @@ const NewTransactionModal = ({ modalOpen, setModalOpen }) => {
     const onPay = async () => {
         // Pay and add transaction funcationallity goes here!
 
-        // Clear states
+        await addTransaction({ amount, receiver, transactionPurpose })
+        // make the amount back to zero
         setAmount(0)
-        setReceiver("")
-        setTransactionPurpose("")
     }
 
     return (
