@@ -14,13 +14,15 @@ import { getAvatarUrl } from "../functions/getAvatarUrl"
 
 const Home = () => {
     const { connected, publicKey } = useWallet()
-    const [userAddress, setUserAddress] = useState("11111111111111111111111111111111")
+    const [userAddress, setUserAddress] = useState("Not connected")
     const [avatar, setAvatar] = useState("")
     const [transactionQRModalOpen, setTransactionQRModalOpen] = useState(false)
     const [newTransactionModalOpen, setNewTransactionModalOpen] = useState(false)
 
     // Get Avatar based on the userAddress
     useEffect(() => {
+        publicKey && setUserAddress(publicKey.toString())
+        !publicKey && setUserAddress("Not Connnected")
         setAvatar(getAvatarUrl(userAddress))
     })
 
@@ -28,7 +30,7 @@ const Home = () => {
 
     return (
         <div className="flex min-h-screen ">
-            <header className="flex w-[250px] flex-col bg-[#0bb534] p-12">
+            <header className="flex w-[250px] flex-col bg-[blue] p-12">
                 <Profile setModalOpen={setTransactionQRModalOpen} avatar={avatar} userAddress={userAddress} />
                 <TransactionQRModal modalOpen={transactionQRModalOpen} setModalOpen={setTransactionQRModalOpen} userAddress={userAddress} myKey={publicKey} />
 

@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import '../styles/globals.css'
-
+import WalletConnectionProvider from '../context/WalletConnectionProvider'
 
 
 function MyApp({ Component, pageProps }) {
@@ -9,9 +9,12 @@ function MyApp({ Component, pageProps }) {
         <>
             <Head>
                 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-                <title>Cash App</title>
+                <title>P2P SOL Marketplace</title>
             </Head>
-            <Component {...pageProps} />
+            <WalletConnectionProvider>
+                <Component {...pageProps} />
+            </WalletConnectionProvider>
+            
         </>
     )
 }

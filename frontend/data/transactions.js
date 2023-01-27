@@ -2,15 +2,15 @@ export const transactions = [
     {
         id: '1',
         from: {
-            name: 'Lance Toledo',
-            handle: 'lancetoledo',
-            avatar: 'https://ca.slack-edge.com/T02AAEL0P-U02TV5RV2TW-g36efad6f5c1-512',
+            name: 'Kamal Singh',
+            handle: '0xkamal7',
+            avatar: 'https://avatars.githubusercontent.com/u/95926324?s=400&u=6f22b0ae21509f84627ad733d4ade58fe39a76af&v=4',
             verified: false,
         },
         to: {
-            name: 'Rafeh Qazi',
-            handle: 'rafeh.qazi',
-            avatar: 'https://ca.slack-edge.com/T02AAEL0P-U02TV5RV2TW-g36efad6f5c1-512',
+            name: 'Dhruv Gupta',
+            handle: 'inchief',
+            avatar: 'https://avatars.githubusercontent.com/u/96371303?v=4',
             verified: true,
         },
         description: "Testing send functionality! 👋",
@@ -23,15 +23,15 @@ export const transactions = [
     {
         id: '2',
         from: {
-            name: 'Lance Toledo',
-            handle: 'lancetoledo',
-            avatar: 'https://ca.slack-edge.com/T02AAEL0P-U02TV5RV2TW-g36efad6f5c1-512',
+            name: 'Kamal Singh',
+            handle: '0xkamal7',
+            avatar: 'https://avatars.githubusercontent.com/u/95926324?s=400&u=6f22b0ae21509f84627ad733d4ade58fe39a76af&v=4',
             verified: false,
         },
         to: {
-            name: 'Lance Toledo',
-            handle: 'lancetoledo',
-            avatar: 'https://ca.slack-edge.com/T8JR01VL4-U02AQ23D15X-63795a2d421c-72',
+            name: 'Kamal Singh',
+            handle: '0xkamal7',
+            avatar: 'https://avatars.githubusercontent.com/u/95926324?s=400&u=6f22b0ae21509f84627ad733d4ade58fe39a76af&v=4',
             verified: false,
         },
         description: 'Payment for Cash App project 💸',
@@ -44,8 +44,8 @@ export const transactions = [
     {
         id: '3',
         from: {
-            name: 'Lance Toledo',
-            handle: 'lancetoledo',
+            name: 'Kamal Singh',
+            handle: '0xkamal7',
             avatar: 'https://ca.slack-edge.com/T02AAEL0P-U02TV5RV2TW-g36efad6f5c1-512',
             verified: false,
         },

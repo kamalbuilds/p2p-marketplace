@@ -1,7 +1,8 @@
 import { ClockIcon, CurrencyDollarIcon, UserCircleIcon, Cog6ToothIcon } from '@heroicons/react/24/outline'
 import { classNames } from '../../utils/classNames'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
-import { truncate } from '../../utils/string'
+import { truncate } from '../../utils/string';
+// calling this function from string.js to truncate the public key to 5 characters
 require('@solana/wallet-adapter-react-ui/styles.css')
 
 const NavMenu = ({ connected, publicKey }) => {
@@ -23,6 +24,7 @@ const NavMenu = ({ connected, publicKey }) => {
         },
     ]
 
+    console.log(connected, publicKey);
     return (
         <nav className="flex flex-1 items-center justify-center">
             <ul className="flex flex-col space-y-10">
@@ -30,10 +32,10 @@ const NavMenu = ({ connected, publicKey }) => {
                     <NavMenuItem key={i} Icon={icon} item={item} current={current} action={action} />
                 ))}
                 <li>
-                    <button className="flex space-x-3">
-                        <UserCircleIcon style={{ height: 24, width: 24, color: '#15ec3c' }} />
-                        <span className="text-sm font-semibold text-[#15ec3c]">{connected ? truncate(publicKey.toString()) : 'Connect Wallet'}</span>
-                    </button>
+                    <WalletMultiButton className="phantom-button" startIcon={<UserCircleIcon />} style={{height: 24,width: 24}}>
+                            {/* if connected render the truncated public key  */}
+                            <span className="text-white font-semibold"> {connected ? truncate(publicKey.toString()) : "Connect wallet"}</span>
+                    </WalletMultiButton>
                 </li>
             </ul>
         </nav >
