@@ -11,19 +11,19 @@ import { getAvatarUrl } from "../../functions/getAvatarUrl"
 
 
 const TransactionQRModal = ({ modalOpen, setModalOpen, userAddress, setQrCode }) => {
-    const { transactions, setTransactions } = useCashApp()
+    const { transactions, setTransactions } = useCashApp();
     const { connection } = useConnection()
     const qrRef = useRef()
     const loadQr = () => {
         setQrCode(true)
     }
     useEffect(() => {
-        console.log("userAddress", userAddress);
-        const recipient = "fr3e3re";
+
+        const recipient = new PublicKey("4hWw4iKFjgbM2CrWmMCtomX4zaaugJiQWQxDSaYictT1");
         const amount = new BigNumber("1")
         const reference = Keypair.generate().publicKey
-        const label = "Evil Cookies Inc"
-        const message = "Thanks for your Sol! 🪙"
+        const label = "PAY to Merchant"
+        const message = "Thanks for your Sol Payment! 🪙"
 
         const urlParams = {
             recipient,
@@ -33,8 +33,8 @@ const TransactionQRModal = ({ modalOpen, setModalOpen, userAddress, setQrCode })
             label,
             message,
         }
-        // const url = encodeURL(urlParams)
-        const url = "https://solana.com"
+        const url = encodeURL(urlParams)
+        // const url = "https://solana.com"
         const qr = createQR(url, 488, 'transparent')
         if (qrRef.current) {
             qrRef.current.innerHTML = ''

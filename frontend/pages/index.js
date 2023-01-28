@@ -14,7 +14,6 @@ const Home = () => {
   const [transactionQRModalOpen, setTransactionQRModalOpen] = useState(false);
   const [qrCode, setQrCode] = useState(false);
 
-
   const {
     avatar,
     userAddress,

@@ -56,87 +56,83 @@ export const useCashApp = () => {
   // - toWallet: PublicKey
   // - amount: BigNumber
   // - reference: PublicKey
-  async function makeTransaction(fromWallet, toWallet, amount, reference) {
-    const network = WalletAdapterNetwork.Devnet;
-    const endpoint = clusterApiUrl(network);
-    const connection = new Connection(endpoint);
+async function makeTransaction(fromWallet, toWallet, amount, reference) {
+  const network = WalletAdapterNetwork.Devnet;
+  const endpoint = clusterApiUrl(network);
+  const connection = new Connection(endpoint);
 
-    // Get a recent blockhash to include in the transaction
-    const { blockhash } = await connection.getLatestBlockhash("finalized");
+  // Get a recent blockhash to include in the transaction
+  const { blockhash } = await connection.getLatestBlockhash("finalized");
 
-    const transaction = new Transaction({
-      recentBlockhash: blockhash,
-      // The buyer pays the transaction fee
-      feePayer: fromWallet,
-    });
+  const transaction = new Transaction({
+    recentBlockhash: blockhash,
+    // The buyer pays the transaction fee
+    feePayer: fromWallet,
+  });
 
-    // Create the instruction to send SOL from the buyer to the shop
-    const transferInstruction = SystemProgram.transfer({
-      fromPubkey: fromWallet,
-      lamports: amount.multipliedBy(LAMPORTS_PER_SOL).toNumber(),
-      toPubkey: toWallet,
-    });
+  // Create the instruction to send SOL from the buyer to the shop
+  const transferInstruction = SystemProgram.transfer({
+    fromPubkey: fromWallet,
+    lamports: amount.multipliedBy(LAMPORTS_PER_SOL).toNumber(),
+    toPubkey: toWallet,
+  });
 
-    // Add the reference to the instruction as a key
-    // This will mean this transaction is returned when we query for the reference
-    transferInstruction.keys.push({
-      pubkey: reference,
-      isSigner: false,
-      isWritable: false,
-    });
+  // Add the reference to the instruction as a key
+  // This will mean this transaction is returned when we query for the reference
+  transferInstruction.keys.push({
+    pubkey: reference,
+    isSigner: false,
+    isWritable: false,
+  });
 
-    // Add the instruction to the transaction
-    transaction.add(transferInstruction);
+  // Add the instruction to the transaction
+  transaction.add(transferInstruction);
 
-    return transaction;
-  }
+  return transaction;
+}
 
-  // TODO: Move somewhere reasonable if here is not reasonable
-  async function doTransaction({ amount, receiver, transactionPurpose }) {
-    const fromWallet = publicKey;
-    const toWallet = new PublicKey(receiver);
-    const bnAmount = new BigNumber(amount);
-    const reference = Keypair.generate().publicKey;
-    const transaction = await makeTransaction(
-      fromWallet,
-      toWallet,
-      bnAmount,
-      reference
-    );
+async function doTransaction({ amount, receiver, transactionPurpose }) {
+  const fromWallet = publicKey;
+  const toWallet = new PublicKey(receiver);
+  const bnAmount = new BigNumber(amount);
+  const reference = Keypair.generate().publicKey;
+  const transaction = await makeTransaction(
+    publicKey,
+    toWallet,
+    bnAmount,
+    reference
+  );
 
-    const txnHash = await sendTransaction(transaction, connection);
-    // console.log(txnHash)
+  const txnHash = await sendTransaction(transaction, connection);
+  console.log(txnHash)
 
-    // this code is the forward form of your code . there is a small syntax error in this code
-    // let me push this in a new branch and you can check it out
-
-    const newID = (transactions.length + 1).toString();
-    console.log("transactions", transactions);
-    const newTransaction = {
-      id: newID,
-      from: {
-        name: publicKey,
-        handle: publicKey,
-        avatar: avatar,
-        verified: true,
-      },
-      to: {
-        name: receiver,
-        handle: "",
-        avatar: getAvatarUrl(receiver.toString()),
-        verified: false,
-      },
-      description: transactionPurpose,
-      transactionDate: new Date(),
-      status: "Completed",
-      amount: amount,
-      source: "",
-      identifier: "",
+  const newID = (transactions.length + 1).toString();
+  const newTransaction = {
+    id: newID,
+    from: {
+      name: publicKey.toString(),
+      handle: publicKey.toString(),
+      avatar: avatar,
+      verified: true,
+    },
+    to: {
+      name: receiver,
+      handle: "",
+      avatar: getAvatarUrl(receiver.toString()),
+      verified: false,
+    },
+    description: transactionPurpose,
+    amount: bnAmount.toString(),
+    status: "Completed",
+    transactionHash:
+    txnHash,
+    timestamp: new Date().toISOString(),
     };
-    setNewTransactionModalOpen(false);
-    setTransactions([newTransaction, ...transactions]);
-  }
+    transactions.push(newTransaction);
+    return newTransaction;
+    }
 
+    
   return {
     getAvatarUrl,
     avatar,
