@@ -52,4 +52,5 @@ input::-webkit-inner-spin-button {
 
   .heading{
     color: red;
+    justify-content: center;
   }

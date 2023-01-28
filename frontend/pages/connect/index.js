@@ -8,7 +8,7 @@ function Connect() {
   const iframeConfig = {
     roomUrl: "https://iframe.huddle01.com/test-room",
     height: "600px",
-    width: "80%",
+    width: "100%",
   };
 
   const reactions = [
@@ -42,7 +42,7 @@ function Connect() {
     <div className="App">
       <div className="container">
         <div>
-            <h1 className="heading">Schedule a One to One Meet before final Payment</h1>
+            <h1 className="heading">Schedule a One to One Meeting before final Payment</h1>
           <br />
 
           {Object.keys(huddleIframeApp.methods)
@@ -70,18 +70,8 @@ function Connect() {
           </button>
         ))}
 
-        <input
-          type="text"
-          value={walletAddress}
-          onChange={(e) => setWalletAddress(e.target.value)}
-          placeholder="Wallet Address"
-        />
 
-        <button
-          onClick={() => huddleIframeApp.methods.connectWallet(walletAddress)}
-        >
-          Connect Wallet
-        </button>
+        
       </div>
     </div>
   );
