@@ -1,16 +1,19 @@
 import { Button } from "../Button";
-import {useState} from "react";
+import { useState } from "react";
+import { useCashApp } from "../../hooks/cashapp";
+// import { useCashApp } from ""../"
 /* eslint-disable @next/next/no-img-element */
-const {doTransaction} = useCashApp();
-const Card = ({ url, productName, price, onClick }) => {
 
-  const { amount, setAmount } = useState(0);
-// Reciever would be merchant's address
-  const [receiver, setReceiver] = useState("J34HqUvYCxALnbPrFRXxVXx1T8GSG8yuxf3vdkx7U8Mx");
+const Card = ({ url, productName, price, onClick }) => {
+  const { doTransaction } = useCashApp();
+
+  // Reciever would be merchant's address
+  const [receiver, setReceiver] = useState(
+    "J34HqUvYCxALnbPrFRXxVXx1T8GSG8yuxf3vdkx7U8Mx"
+  );
   const [transactionPurpose, setTransactionPurpose] = useState("");
   const onPay = async () => {
-    await doTransaction({ price, receiver, transactionPurpose });
-    
+    await doTransaction({ amount: price, receiver, transactionPurpose });
   };
 
   return (
@@ -24,7 +27,6 @@ const Card = ({ url, productName, price, onClick }) => {
             {productName}
           </h5>
           <p className="mb-4 text-base text-gray-700">{price} SOL</p>
-          setAmount(price);
           <Button onClick={onPay} className="w-full">
             Buy
           </Button>

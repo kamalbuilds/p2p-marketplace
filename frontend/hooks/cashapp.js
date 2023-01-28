@@ -29,7 +29,7 @@ export const useCashApp = () => {
     }, [value, storageKey]);
     return [value, setValue];
   };
-// it is fix 
+  // it is fix
   // const qaziAddress = new PublicKey('2aaKJpbQNpJXPgReNKQtB5ozs1DnoADCQCGk5pD7x2Xg')
 
   // I can create a transaction request with Solana pay between two wallets
@@ -56,83 +56,86 @@ export const useCashApp = () => {
   // - toWallet: PublicKey
   // - amount: BigNumber
   // - reference: PublicKey
-async function makeTransaction(fromWallet, toWallet, amount, reference) {
-  const network = WalletAdapterNetwork.Devnet;
-  const endpoint = clusterApiUrl(network);
-  const connection = new Connection(endpoint);
+  async function makeTransaction(fromWallet, toWallet, amount, reference) {
+    const network = WalletAdapterNetwork.Devnet;
+    const endpoint = clusterApiUrl(network);
+    const connection = new Connection(endpoint);
 
-  // Get a recent blockhash to include in the transaction
-  const { blockhash } = await connection.getLatestBlockhash("finalized");
+    // Get a recent blockhash to include in the transaction
+    const { blockhash } = await connection.getLatestBlockhash("finalized");
 
-  const transaction = new Transaction({
-    recentBlockhash: blockhash,
-    // The buyer pays the transaction fee
-    feePayer: fromWallet,
-  });
+    const transaction = new Transaction({
+      recentBlockhash: blockhash,
+      // The buyer pays the transaction fee
+      feePayer: fromWallet,
+    });
 
-  // Create the instruction to send SOL from the buyer to the shop
-  const transferInstruction = SystemProgram.transfer({
-    fromPubkey: fromWallet,
-    lamports: amount.multipliedBy(LAMPORTS_PER_SOL).toNumber(),
-    toPubkey: toWallet,
-  });
+    console.log(amount); // bigNumber
 
-  // Add the reference to the instruction as a key
-  // This will mean this transaction is returned when we query for the reference
-  transferInstruction.keys.push({
-    pubkey: reference,
-    isSigner: false,
-    isWritable: false,
-  });
+    console.log(amount.multipliedBy(LAMPORTS_PER_SOL));
 
-  // Add the instruction to the transaction
-  transaction.add(transferInstruction);
+    // Create the instruction to send SOL from the buyer to the shop
+    const transferInstruction = SystemProgram.transfer({
+      fromPubkey: fromWallet,
+      lamports: amount.multipliedBy(LAMPORTS_PER_SOL).toNumber(),
+      toPubkey: toWallet,
+    });
 
-  return transaction;
-}
+    // Add the reference to the instruction as a key
+    // This will mean this transaction is returned when we query for the reference
+    transferInstruction.keys.push({
+      pubkey: reference,
+      isSigner: false,
+      isWritable: false,
+    });
 
-async function doTransaction({ amount, receiver, transactionPurpose }) {
-  const fromWallet = publicKey;
-  const toWallet = new PublicKey(receiver);
-  const bnAmount = new BigNumber(amount);
-  const reference = Keypair.generate().publicKey;
-  const transaction = await makeTransaction(
-    publicKey,
-    toWallet,
-    bnAmount,
-    reference
-  );
+    // Add the instruction to the transaction
+    transaction.add(transferInstruction);
 
-  const txnHash = await sendTransaction(transaction, connection);
-  console.log(txnHash)
+    return transaction;
+  }
 
-  const newID = (transactions.length + 1).toString();
-  const newTransaction = {
-    id: newID,
-    from: {
-      name: publicKey.toString(),
-      handle: publicKey.toString(),
-      avatar: avatar,
-      verified: true,
-    },
-    to: {
-      name: receiver,
-      handle: "",
-      avatar: getAvatarUrl(receiver.toString()),
-      verified: false,
-    },
-    description: transactionPurpose,
-    amount: bnAmount.toString(),
-    status: "Completed",
-    transactionHash:
-    txnHash,
-    timestamp: new Date().toISOString(),
+  async function doTransaction({ amount, receiver, transactionPurpose }) {
+    console.log("amount", amount);
+    const fromWallet = publicKey;
+    const toWallet = new PublicKey(receiver);
+    const bnAmount = new BigNumber(amount);
+    const reference = Keypair.generate().publicKey;
+    const transaction = await makeTransaction(
+      publicKey,
+      toWallet,
+      bnAmount,
+      reference
+    );
+
+    const txnHash = await sendTransaction(transaction, connection);
+    console.log(txnHash);
+
+    const newID = (transactions.length + 1).toString();
+    const newTransaction = {
+      id: newID,
+      from: {
+        name: publicKey.toString(),
+        handle: publicKey.toString(),
+        avatar: avatar,
+        verified: true,
+      },
+      to: {
+        name: receiver,
+        handle: "",
+        avatar: getAvatarUrl(receiver.toString()),
+        verified: false,
+      },
+      description: transactionPurpose,
+      amount: bnAmount.toString(),
+      status: "Completed",
+      transactionHash: txnHash,
+      timestamp: new Date().toISOString(),
     };
     transactions.push(newTransaction);
     return newTransaction;
-    }
+  }
 
-    
   return {
     getAvatarUrl,
     avatar,
