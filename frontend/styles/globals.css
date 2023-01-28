@@ -51,5 +51,10 @@ input::-webkit-inner-spin-button {
   
 
   .heading{
-    color: red;
+ 
+    background: #246bfd;
+    color: white;
+    width:1736px;
+    text-align:center;
+    font-size:40px;
   }
