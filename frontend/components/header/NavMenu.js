@@ -2,7 +2,8 @@ import { ClockIcon, CurrencyDollarIcon, UserCircleIcon, Cog6ToothIcon } from '@h
 import { classNames } from '../../utils/classNames'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { truncate } from '../../utils/string'
-require('@solana/wallet-adapter-react-ui/styles.css')
+require('@solana/wallet-adapter-react-ui/styles.css');
+import Router from 'next/router';
 
 const NavMenu = ({ connected, publicKey }) => {
     const menus = [
@@ -13,8 +14,9 @@ const NavMenu = ({ connected, publicKey }) => {
         },
         {
             icon: CurrencyDollarIcon,
-            item: 'Cash Card',
+            item: 'Get SOL',
             current: false,
+            action: () => Router.push('/exchange')
         },
         {
             icon: Cog6ToothIcon,
