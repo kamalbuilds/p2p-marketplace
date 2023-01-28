@@ -23,7 +23,7 @@ const TransactionQRModal = ({ modalOpen, setModalOpen, userAddress, setQrCode })
         const amount = new BigNumber("1")
         const reference = Keypair.generate().publicKey
         const label = "Evil Cookies Inc"
-        const message = "Thanks for your Sol! 🍪"
+        const message = "Thanks for your Sol! 🪙"
 
         const urlParams = {
             recipient,

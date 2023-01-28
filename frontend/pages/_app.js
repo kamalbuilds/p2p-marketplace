@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <title>Cash App</title>
+        <title>P2P SOL Marketplace</title>
       </Head>
 
       <QueryClientProvider client={queryClient}>

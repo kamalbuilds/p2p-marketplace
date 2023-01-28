@@ -14,6 +14,7 @@ const Home = () => {
   const [transactionQRModalOpen, setTransactionQRModalOpen] = useState(false);
   const [qrCode, setQrCode] = useState(false);
 
+
   const {
     avatar,
     userAddress,
@@ -26,7 +27,7 @@ const Home = () => {
 
   return (
     <div className="flex min-h-screen ">
-      <header className="flex w-[250px] flex-col bg-[#0bb534] p-12">
+      <header className="flex w-[250px] flex-col bg-[blue] p-12">
         <Profile
           setModalOpen={setTransactionQRModalOpen}
           avatar={avatar}
@@ -55,6 +56,8 @@ const Home = () => {
         <SearchBar />
 
         <TransactionsList connected={connected} transactions={transactions} />
+
+        
       </main>
     </div>
   );
