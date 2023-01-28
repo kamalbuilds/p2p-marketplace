@@ -14,6 +14,7 @@ const Home = () => {
   const [transactionQRModalOpen, setTransactionQRModalOpen] = useState(false);
   const [qrCode, setQrCode] = useState(false);
 
+
   const {
     avatar,
     userAddress,
@@ -57,6 +58,8 @@ console.log(transactions);
 
 
         <TransactionsList connected={connected} transactions={transactions} />
+
+        
       </main>
     </div>
   );
