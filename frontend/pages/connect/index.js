@@ -11,23 +11,7 @@ function Connect() {
     width: "80%",
   };
 
-  const reactions = [
-    "😂",
-    "😢",
-    "😦",
-    "😍",
-    "🤔",
-    "👀",
-    "🙌",
-    "👍",
-    "👎",
-    "🔥",
-    "🍻",
-    "🚀",
-    "🎉",
-    "❤️",
-    "💯",
-  ];
+
 
   useEffect(() => {
     huddleIframeApp.on("peer-join", (data) =>
@@ -45,43 +29,11 @@ function Connect() {
             <h1 className="heading">Schedule a One to One Meet before final Payment</h1>
           <br />
 
-          {Object.keys(huddleIframeApp.methods)
-            .filter((key) => !["sendReaction", "connectWallet"].includes(key))
-            .map((key) => (
-              <button
-                key={key}
-                onClick={() => {
-                  huddleIframeApp.methods[key]();
-                }}
-              >
-                {key}
-              </button>
-            ))}
         </div>
-
+        <div className="frame">
         <HuddleIframe config={iframeConfig} />
-        <br />
-        {reactions.map((reaction) => (
-          <button
-            key={reaction}
-            onClick={() => huddleIframeApp.methods.sendReaction(reaction)}
-          >
-            {reaction}
-          </button>
-        ))}
-
-        <input
-          type="text"
-          value={walletAddress}
-          onChange={(e) => setWalletAddress(e.target.value)}
-          placeholder="Wallet Address"
-        />
-
-        <button
-          onClick={() => huddleIframeApp.methods.connectWallet(walletAddress)}
-        >
-          Connect Wallet
-        </button>
+        </div>
+        
       </div>
     </div>
   );
