@@ -10,7 +10,7 @@ import Sidebar from "../../components/sidebar";
 
 const SimpleSwap = () => {
   return (
-    <div>
+     <div>
       <div className="flex min-h-screen ">
         <Sidebar />
 

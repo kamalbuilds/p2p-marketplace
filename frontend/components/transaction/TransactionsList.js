@@ -7,7 +7,7 @@ const TransactionsList = ({ connected, transactions }) => {
   const [currentTransactionID, setCurrentTransactionID] = useState(null);
 
   const currentTransaction = useMemo(() => {
-    console.log(transactions, "TRANSACTIONS");
+    // console.log(transactions, "TRANSACTIONS");
 
     // transactions should be array but not number  can you make array insead number it should be work 
 

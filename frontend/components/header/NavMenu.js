@@ -1,4 +1,5 @@
-import { ClockIcon, CurrencyDollarIcon, UserCircleIcon, Cog6ToothIcon } from '@heroicons/react/24/outline'
+import {  Cog6ToothIcon } from '@heroicons/react/24/outline'
+import { IconClockHour1 , IconCoin , IconUser} from '@tabler/icons-react';
 import { classNames } from '../../utils/classNames'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { truncate } from '../../utils/string'
@@ -8,20 +9,22 @@ import Router from 'next/router';
 const NavMenu = ({ connected, publicKey }) => {
     const menus = [
         {
-            icon: ClockIcon,
+            icon: IconClockHour1,
             item: 'Activity',
             current: true,
+            action: () => Router.push('/')
         },
         {
-            icon: CurrencyDollarIcon,
+            icon: IconCoin,
             item: 'Get SOL',
             current: false,
             action: () => Router.push('/exchange')
         },
         {
             icon: Cog6ToothIcon,
-            item: 'Settings',
+            item: 'Huddle Connect',
             current: false,
+            action: () => Router.push('/connect')
         },
     ]
 

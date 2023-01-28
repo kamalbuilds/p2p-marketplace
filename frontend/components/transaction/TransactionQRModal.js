@@ -62,7 +62,7 @@ const TransactionQRModal = ({ modalOpen, setModalOpen, userAddress, setQrCode })
                     { commitment: 'confirmed' }
                 )
 
-                console.log("confirmed, proceed with evil deeds")
+                console.log("confirmed, proceed 🚀🚀")
 
                 const newID = (transactions.length + 1).toString()
                 const newTransaction = {
