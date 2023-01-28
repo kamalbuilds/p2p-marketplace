@@ -17,7 +17,7 @@ import BigNumber from "bignumber.js";
 export const useCashApp = () => {
   // LocalStorage Hook
   const useLocalStorage = (storageKey, fallbackState) => {
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState(fallbackState);
     useEffect(() => {
       if (localStorage) {
         const data = localStorage.getItem(storageKey);
@@ -29,8 +29,6 @@ export const useCashApp = () => {
     }, [value, storageKey]);
     return [value, setValue];
   };
-  // it is fix
-  // const qaziAddress = new PublicKey('2aaKJpbQNpJXPgReNKQtB5ozs1DnoADCQCGk5pD7x2Xg')
 
   // I can create a transaction request with Solana pay between two wallets
   // I want to be able to decide which two wallets to send/receive sol
@@ -109,6 +107,7 @@ export const useCashApp = () => {
     );
 
     const txnHash = await sendTransaction(transaction, connection);
+    alert("Congratulations 🚀🪙, your transaction is successfull");
     console.log(txnHash);
 
     const newID = (transactions.length + 1).toString();
@@ -132,7 +131,8 @@ export const useCashApp = () => {
       transactionHash: txnHash,
       timestamp: new Date().toISOString(),
     };
-    transactions.push(newTransaction);
+    console.log(transactions)
+    setTransactions([...transactions, newTransaction]);
     return newTransaction;
   }
 
