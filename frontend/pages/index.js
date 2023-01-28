@@ -12,18 +12,9 @@ import Sidebar from "../components/sidebar";
 
 const Home = () => {
   const { connected, publicKey } = useWallet();
-  const [transactionQRModalOpen, setTransactionQRModalOpen] = useState(false);
-  const [qrCode, setQrCode] = useState(false);
 
-  const {
-    avatar,
-    userAddress,
-    doTransaction,
-    transactions, // can you fix it?/
-    setNewTransactionModalOpen,
-    newTransactionModalOpen,
-  } = useCashApp();
-  console.log(transactions);
+  const { transactions } = useCashApp();
+  console.log("loop index page");
 
   return (
     <div className="flex min-h-screen ">
