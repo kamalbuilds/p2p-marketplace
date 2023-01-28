@@ -17,7 +17,7 @@ const MarketplacePage = () => {
 
       <main className="flex flex-1 flex-col p-5">
         <p className="my-5 text-center text-2xl font-bold">
-          List of Marketplace Page
+          Marketplace 
         </p>
         {!isLoading && (
           <div>

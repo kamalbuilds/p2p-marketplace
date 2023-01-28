@@ -11,6 +11,24 @@ function Connect() {
     width: "100%",
   };
 
+  const reactions = [
+    "😂",
+    "😢",
+    "😦",
+    "😍",
+    "🤔",
+    "👀",
+    "🙌",
+    "👍",
+    "👎",
+    "🔥",
+    "🍻",
+    "🚀",
+    "🎉",
+    "❤️",
+    "💯",
+  ];
+
 
 
   useEffect(() => {
@@ -34,6 +52,15 @@ function Connect() {
         <HuddleIframe config={iframeConfig} />
         </div>
 
+        <br />
+        {reactions.map((reaction) => (
+          <button
+            key={reaction}
+            onClick={() => huddleIframeApp.methods.sendReaction(reaction)}
+          >
+            {reaction}
+          </button>
+        ))}
         
       </div>
     </div>
