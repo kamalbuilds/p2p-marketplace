@@ -21,7 +21,7 @@ const Sidebar = () => {
   } = useCashApp();
   return (
     <div className="h-full min-h-screen">
-      <header className="flex min-h-screen w-[250px] flex-col bg-[#0bb534] p-12">
+      <header className="flex min-h-screen w-[250px] flex-col bg-[blue] p-12">
         <Profile
           setModalOpen={setTransactionQRModalOpen}
           avatar={avatar}

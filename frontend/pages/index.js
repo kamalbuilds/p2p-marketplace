@@ -8,6 +8,7 @@ import TransactionsList from "../components/transaction/TransactionsList";
 import { useWallet } from "@solana/wallet-adapter-react";
 import TransactionQRModal from "../components/transaction/TransactionQRModal";
 import { useCashApp } from "../hooks/cashapp";
+import Sidebar from "../components/sidebar";
 
 const Home = () => {
   const { connected, publicKey } = useWallet();
@@ -26,37 +27,12 @@ const Home = () => {
 
   return (
     <div className="flex min-h-screen ">
-      <header className="flex w-[250px] flex-col bg-[blue] p-12">
-        <Profile
-          setModalOpen={setTransactionQRModalOpen}
-          avatar={avatar}
-          userAddress={userAddress}
-          setQrCode={setQrCode}
-        />
-        <TransactionQRModal
-          modalOpen={transactionQRModalOpen}
-          setModalOpen={setTransactionQRModalOpen}
-          userAddress={userAddress}
-          setQrCode={setQrCode}
-          myKey={publicKey}
-        />
-
-        <NavMenu connected={connected} publicKey={publicKey} />
-
-        <Action setModalOpen={setNewTransactionModalOpen} />
-        <NewTransactionModal
-          modalOpen={newTransactionModalOpen}
-          setModalOpen={setNewTransactionModalOpen}
-          addTransaction={doTransaction}
-        />
-      </header>
+      <Sidebar />
 
       <main className="flex flex-1 flex-col">
         <SearchBar />
 
         <TransactionsList connected={connected} transactions={transactions} />
-
-        
       </main>
     </div>
   );
