@@ -1,7 +1,7 @@
 import Head from "next/head";
 import "../styles/globals.css";
 
-// import WalletConnectionProvider from "../components/WalletConnectionProvider";
+import WalletConnectionProvider from "../context/WalletConnectionProvider";
 
 function MyApp({ Component, pageProps }) {
   return (

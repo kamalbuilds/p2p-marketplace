@@ -18,10 +18,12 @@ const Home = () => {
     avatar,
     userAddress,
     doTransaction,
-    transactions,
+    transactions, // can you fix it?/
     setNewTransactionModalOpen,
     newTransactionModalOpen,
   } = useCashApp();
+console.log(transactions);
+  
 
   return (
     <div className="flex min-h-screen ">
@@ -52,6 +54,7 @@ const Home = () => {
 
       <main className="flex flex-1 flex-col">
         <SearchBar />
+
 
         <TransactionsList connected={connected} transactions={transactions} />
       </main>

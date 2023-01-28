@@ -18,7 +18,8 @@ const TransactionQRModal = ({ modalOpen, setModalOpen, userAddress, setQrCode })
         setQrCode(true)
     }
     useEffect(() => {
-        const recipient = new PublicKey(userAddress)
+        console.log("userAddress", userAddress);
+        const recipient = "fr3e3re";
         const amount = new BigNumber("1")
         const reference = Keypair.generate().publicKey
         const label = "Evil Cookies Inc"
@@ -32,7 +33,8 @@ const TransactionQRModal = ({ modalOpen, setModalOpen, userAddress, setQrCode })
             label,
             message,
         }
-        const url = encodeURL(urlParams)
+        // const url = encodeURL(urlParams)
+        const url = "https://solana.com"
         const qr = createQR(url, 488, 'transparent')
         if (qrRef.current) {
             qrRef.current.innerHTML = ''
@@ -68,7 +70,8 @@ const TransactionQRModal = ({ modalOpen, setModalOpen, userAddress, setQrCode })
                     from: {
                         name: recipient,
                         handle: recipient,
-                        avatar: getAvatarUrl(recipient.toString()),
+                        // avatar: getAvatarUrl(recipient),
+                        avatar: "sfsd",
                         verified: true,
                     },
                     to: {
