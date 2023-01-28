@@ -8,7 +8,7 @@ function Connect() {
   const iframeConfig = {
     roomUrl: "https://iframe.huddle01.com/test-room",
     height: "600px",
-    width: "80%",
+    width: "100%",
   };
 
 
@@ -26,13 +26,14 @@ function Connect() {
     <div className="App">
       <div className="container">
         <div>
-            <h1 className="heading">Schedule a One to One Meet before final Payment</h1>
+            <h1 className="heading">Schedule a One to One Meeting before final Payment</h1>
           <br />
 
         </div>
         <div className="frame">
         <HuddleIframe config={iframeConfig} />
         </div>
+
         
       </div>
     </div>
