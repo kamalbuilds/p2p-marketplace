@@ -1,33 +1,27 @@
-import { useState, useEffect } from "react";
-import Action from "../components/header/Action";
-import NavMenu from "../components/header/NavMenu";
-import Profile from "../components/header/Profile";
-import SearchBar from "../components/home/SearchBar";
-import NewTransactionModal from "../components/transaction/NewTransactionModal";
-import TransactionsList from "../components/transaction/TransactionsList";
 import { useWallet } from "@solana/wallet-adapter-react";
-import TransactionQRModal from "../components/transaction/TransactionQRModal";
-import { useCashApp } from "../hooks/cashapp";
+import { useState } from "react";
+import { useCashApp } from "../../hooks/cashapp";
+import Action from "../header/Action";
+import NavMenu from "../header/NavMenu";
+import Profile from "../header/Profile";
+import NewTransactionModal from "../transaction/NewTransactionModal";
+import TransactionQRModal from "../transaction/TransactionQRModal";
 
-const Home = () => {
+const Sidebar = () => {
   const { connected, publicKey } = useWallet();
   const [transactionQRModalOpen, setTransactionQRModalOpen] = useState(false);
   const [qrCode, setQrCode] = useState(false);
-
 
   const {
     avatar,
     userAddress,
     doTransaction,
-    transactions, // can you fix it?/
     setNewTransactionModalOpen,
     newTransactionModalOpen,
   } = useCashApp();
-  console.log(transactions);
-
   return (
-    <div className="flex min-h-screen ">
-      <header className="flex w-[250px] flex-col bg-[blue] p-12">
+    <div className="h-full min-h-screen">
+      <header className="flex min-h-screen w-[250px] flex-col bg-[#0bb534] p-12">
         <Profile
           setModalOpen={setTransactionQRModalOpen}
           avatar={avatar}
@@ -51,16 +45,8 @@ const Home = () => {
           addTransaction={doTransaction}
         />
       </header>
-
-      <main className="flex flex-1 flex-col">
-        <SearchBar />
-
-        <TransactionsList connected={connected} transactions={transactions} />
-
-        
-      </main>
     </div>
   );
 };
 
-export default Home;
+export default Sidebar;
