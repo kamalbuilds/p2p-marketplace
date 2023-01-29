@@ -23,6 +23,7 @@ const Home = () => {
 
       <main className="flex flex-1 flex-col">
         <SearchBar />
+        {JSON.stringify(transactions)}
         <TransactionsList connected={connected} transactions={transactions} />
         {transactions && transactions.length === 0 && (
           <>

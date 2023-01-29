@@ -9,17 +9,15 @@ const TransactionsList = ({ connected, transactions }) => {
   const currentTransaction = useMemo(() => {
     // console.log(transactions, "TRANSACTIONS");
 
-    // transactions should be array but not number  can you make array insead number it should be work 
-
-    if (!transactions) return null;
-
-    else {
-
-        transactions.find((transaction) => transaction.id === currentTransactionID),
-          [currentTransactionID];
+    // transactions should be array but not number  can you make array insead number it should be work
+    if (!transactions) {
+      return;
+    } else {
+      transactions.find(
+        (transaction) => transaction.id === currentTransactionID
+      );
     }
-
-  });
+  }, [currentTransactionID]);
 
   const toggleTransactionDetailModal = (value, transactionID) => {
     setCurrentTransactionID(transactionID);
