@@ -36,6 +36,12 @@ const NavMenu = ({ connected, publicKey }) => {
             item : 'Add Products',
             current: false,
             action : ()=> Router.push('/marketplace/new')
+        },
+        {
+            icon :  IconCoin,
+            item : 'Set up Gari',
+            current: false,
+            action : ()=> Router.push('/marketplace/gari')
         }
     ]
 
