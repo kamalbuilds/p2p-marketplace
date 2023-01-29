@@ -42,9 +42,9 @@ const TransactionQRModal = ({ modalOpen, setModalOpen, userAddress, setQrCode })
         }
 
         // Wait for the user to send the transaction
-
+// why setInteval?  to see if the transactions work or not ?
         const interval = setInterval(async () => {
-            console.log("waiting for transaction confirmation")
+            // console.log("waiting for transaction confirmation")
             try {
                 // Check if there is any transaction for the reference
                 const signatureInfo = await findReference(connection, reference, { finality: 'confirmed' })

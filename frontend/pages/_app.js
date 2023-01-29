@@ -5,7 +5,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
-
+import { AuthProvider } from '../AuthContext';
 import WalletConnectionProvider from "../context/WalletConnectionProvider";
 import { useState } from "react";
 
@@ -18,13 +18,17 @@ function MyApp({ Component, pageProps }) {
         <title>P2P SOL Marketplace</title>
       </Head>
 
-      <QueryClientProvider client={queryClient}>
-        <Hydrate state={pageProps.dehydratedState}>
-          <WalletConnectionProvider>
-            <Component {...pageProps} />
-          </WalletConnectionProvider>
-        </Hydrate>
-      </QueryClientProvider>
+      <AuthProvider>  
+
+        <QueryClientProvider client={queryClient}>
+          <Hydrate state={pageProps.dehydratedState}>
+            <WalletConnectionProvider>
+              <Component {...pageProps} />
+            </WalletConnectionProvider>
+          </Hydrate>
+        </QueryClientProvider>
+
+        </AuthProvider>
     </>
   );
 }
