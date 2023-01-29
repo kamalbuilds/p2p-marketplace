@@ -1,12 +1,5 @@
 import React from "react";
 import Sidebar from "../../components/sidebar";
-// import Action from "../../components/header/Action";
-// import NavMenu from "../../components/header/NavMenu";
-// import Profile from "../../components/header/Profile";
-
-// import NewTransactionModal from "../../components/transaction/NewTransactionModal";
-
-// import TransactionQRModal from "../../components/transaction/TransactionQRModal";
 
 const SimpleSwap = () => {
   return (
@@ -15,38 +8,13 @@ const SimpleSwap = () => {
         <Sidebar />
 
         <main className="flex flex-1 flex-col p-5">
-          {/* <header className="flex w-[250px] flex-col bg-[blue] p-12">
-        <Profile
-          setModalOpen={setTransactionQRModalOpen}
-          avatar={avatar}
-          userAddress={userAddress}
-          setQrCode={setQrCode}
-        />
-        <TransactionQRModal
-          modalOpen={transactionQRModalOpen}
-          setModalOpen={setTransactionQRModalOpen}
-          userAddress={userAddress}
-          setQrCode={setQrCode}
-          myKey={publicKey}
-        />
-
-        <NavMenu connected={connected} publicKey={publicKey} />
-
-        <Action setModalOpen={setNewTransactionModalOpen} />
-        <NewTransactionModal
-          modalOpen={newTransactionModalOpen}
-          setModalOpen={setNewTransactionModalOpen}
-          addTransaction={doTransaction}
-        />
-      </header> */}
           <div>
             <h1 className="heading ">
               Exchange any tokens to Solana 🪙 and pay using solanaPay
             </h1>
-            
-            <div className="flex m-20 justify-center">
-              <div>
 
+            <div className="m-20 flex justify-center">
+              <div>
                 <iframe
                   id="simpleswap-frame"
                   name="SimpleSwap Widget"
