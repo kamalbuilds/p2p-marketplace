@@ -10,3 +10,20 @@ Point of sale system for local merchants and shopkeepers to onboard users easily
 Features 
 
 
+<img width="1277" alt="Screenshot 2023-01-29 102808" src="https://user-images.githubusercontent.com/96371303/215306132-b4476129-eda0-44fb-912a-a85f8717d459.png">
+
+
+
+<img width="1280" alt="Screenshot 2023-01-29 102946" src="https://user-images.githubusercontent.com/96371303/215306189-e67016e0-f494-44d6-bc3d-be337f8e6f60.png">
+
+
+<img width="1278" alt="Screenshot 2023-01-29 103124" src="https://user-images.githubusercontent.com/96371303/215306264-32059f50-0a00-46f5-94c9-4529085543ff.png">
+
+
+<img width="1280" alt="Screenshot 2023-01-29 103201" src="https://user-images.githubusercontent.com/96371303/215306290-0dce0664-7c59-47d6-89a7-729b08085a21.png">
+
+
+<img width="1280" alt="image" src="https://user-images.githubusercontent.com/96371303/215306356-72a8382c-4f32-4ec1-82a6-cbed7064e1b9.png">
+
+
+<img width="1280" alt="Screenshot 2023-01-29 103314" src="https://user-images.githubusercontent.com/96371303/215306144-3cb20782-8d57-4f8e-9f74-a17eef6a5180.png">
