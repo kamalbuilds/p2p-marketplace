@@ -113,11 +113,7 @@ const TransactionMetadata = ({ metadata }) => {
 const TransactionFooter = () => {
   return (
     <div className="flex flex-col items-center justify-center text-sm text-gray-400">
-      <p>Block Inc.</p>
-      <p>1455 Market St. Suite 600</p>
-      <p>San Francisco. CA 94103</p>
-      <p>(800) 969-1940</p>
-      <p>Privacy Notice</p>
+      <p>JAIPUR LNMIIT, India</p>
     </div>
   );
 };

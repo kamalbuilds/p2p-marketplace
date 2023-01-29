@@ -22,18 +22,16 @@ const Home = () => {
       <Sidebar />
 
       <main className="flex flex-1 flex-col">
-        <SearchBar />
+        <>
+          <TransactionsList connected={connected} transactions={transactions} />
+          <img
+            src="/images/p2p.jpeg"
+            className="m-auto mt-10 aspect-square h-[500px] w-[500px]"
+            alt="helloworld"
+          />
+        </>
+        {/* <SearchBar /> */}
         {/* {JSON.stringify(transactions)} */}
-        <TransactionsList connected={connected} transactions={transactions} />
-        {transactions && transactions.length === 0 && (
-          <>
-            <img
-              src="/images/p2p.jpeg"
-              className="m-auto mt-10 aspect-square h-[500px] w-[500px]"
-              alt="helloworld"
-            />
-          </>
-        )}
       </main>
     </div>
   );
