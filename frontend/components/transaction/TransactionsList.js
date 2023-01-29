@@ -4,23 +4,13 @@ import TransactionItem from "./TransactionItem";
 
 const TransactionsList = ({ connected, transactions }) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [currentTransactionID, setCurrentTransactionID] = useState(null);
-
-  const currentTransaction = useMemo(() => {
-    // console.log(transactions, "TRANSACTIONS");
-
-    // transactions should be array but not number  can you make array insead number it should be work
-    if (!transactions) {
-      return;
-    } else {
-      transactions.find(
-        (transaction) => transaction.id === currentTransactionID
-      );
-    }
-  }, [currentTransactionID]);
+  const [currentTransaction, setCurrentTransaction] = useState(null);
 
   const toggleTransactionDetailModal = (value, transactionID) => {
-    setCurrentTransactionID(transactionID);
+    const data = transactions.find(
+      (transaction) => transaction.id === transactionID
+    );
+    setCurrentTransaction(data);
     setModalOpen(value);
   };
 
