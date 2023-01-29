@@ -1,5 +1,4 @@
-import {  Cog6ToothIcon } from '@heroicons/react/24/outline'
-import { IconClockHour1 , IconCoin , IconUser} from '@tabler/icons-react';
+import { IconClockHour1 , IconCoin , IconUser , IconVideo , IconBuildingStore } from '@tabler/icons-react';
 import { classNames } from '../../utils/classNames'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { truncate } from '../../utils/string'
@@ -21,11 +20,17 @@ const NavMenu = ({ connected, publicKey }) => {
             action: () => Router.push('/exchange')
         },
         {
-            icon: Cog6ToothIcon,
+            icon: IconVideo,
             item: 'Huddle Connect',
             current: false,
             action: () => Router.push('/connect')
         },
+        {
+            icon: IconBuildingStore,
+            item: 'MarketPlace',
+            current: false,
+            action : ()=> Router.push('/marketplace')
+        }
     ]
 
     return (
@@ -35,7 +40,7 @@ const NavMenu = ({ connected, publicKey }) => {
                     <NavMenuItem key={i} Icon={icon} item={item} current={current} action={action} />
                 ))}
                 <li>
-                    <WalletMultiButton className="phantom-button" startIcon={<UserCircleIcon style={{ height: 24, width: 24, color: '#15ec3c' }} />}>
+                    <WalletMultiButton className="phantom-button" startIcon={<IconUser style={{ height: 24, width: 24, color: '#15ec3c' }} />}>
                         <span className="text-sm font-semibold text-[#15ec3c]">{connected ? truncate(publicKey.toString()) : 'Connect Wallet'}</span>
                     </WalletMultiButton>
                 </li>
