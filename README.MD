@@ -2,6 +2,8 @@
 
 ![building-store](https://user-images.githubusercontent.com/96371303/215303732-b95caef4-f19c-435f-a866-ebee3d091866.svg)
 
+<img width="727" alt="image" src="https://user-images.githubusercontent.com/96371303/215309904-cef1f671-db7d-4677-b188-770ab74d56cd.png">
+
 Built On Solana with solanapay functionality
 
 
