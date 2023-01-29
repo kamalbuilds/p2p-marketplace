@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from "react";
 import Action from "../components/header/Action";
 import NavMenu from "../components/header/NavMenu";
@@ -22,8 +23,16 @@ const Home = () => {
 
       <main className="flex flex-1 flex-col">
         <SearchBar />
-
         <TransactionsList connected={connected} transactions={transactions} />
+        {transactions && transactions.length === 0 && (
+          <>
+            <img
+              src="/images/p2p.jpeg"
+              className="m-auto mt-10 aspect-square h-[500px] w-[500px]"
+              alt="helloworld"
+            />
+          </>
+        )}
       </main>
     </div>
   );
