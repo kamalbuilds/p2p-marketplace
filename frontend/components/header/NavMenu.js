@@ -1,4 +1,4 @@
-import { IconClockHour1 , IconCoin , IconUser , IconVideo , IconBuildingStore } from '@tabler/icons-react';
+import { IconClockHour1 , IconCoin , IconUser , IconVideo , IconBuildingStore , IconNewSection } from '@tabler/icons-react';
 import { classNames } from '../../utils/classNames'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { truncate } from '../../utils/string'
@@ -9,7 +9,7 @@ const NavMenu = ({ connected, publicKey }) => {
     const menus = [
         {
             icon: IconClockHour1,
-            item: 'Activity',
+            item: 'Transactions',
             current: true,
             action: () => Router.push('/')
         },
@@ -30,6 +30,12 @@ const NavMenu = ({ connected, publicKey }) => {
             item: 'MarketPlace',
             current: false,
             action : ()=> Router.push('/marketplace')
+        },
+        {
+            icon :  IconNewSection,
+            item : 'Add Products',
+            current: false,
+            action : ()=> Router.push('/marketplace/new')
         }
     ]
 

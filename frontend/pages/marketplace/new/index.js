@@ -21,7 +21,7 @@ const MarketplacePage = () => {
         <div className="w-full">
           <div className="mx-auto max-w-xl">
             <p className="my-5 text-center text-2xl font-bold">
-              Enter Marketplace Form
+              Enter Product Information 
             </p>
             <Form
               submitText="Login"

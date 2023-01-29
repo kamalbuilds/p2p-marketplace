@@ -1,6 +1,7 @@
 import { Button } from "../Button";
 import { useState } from "react";
 import { useCashApp } from "../../hooks/cashapp";
+import  Router  from "next/router";
 // import { useCashApp } from ""../"
 /* eslint-disable @next/next/no-img-element */
 
@@ -20,7 +21,7 @@ const Card = ({ url, productName, price, onClick }) => {
     <div className="flex justify-center">
       <div className=" max-w-sm rounded-lg bg-white shadow-lg">
         <a href="#!">
-          <img className="aspect-video rounded-t-lg" src={url} alt="" />
+          <img className="aspect-square rounded-t-lg" src={url} alt="" />
         </a>
         <div className="p-6">
           <h5 className="mb-2 text-xl font-medium text-gray-900">
@@ -29,6 +30,13 @@ const Card = ({ url, productName, price, onClick }) => {
           <p className="mb-4 text-base text-gray-700">{price} SOL</p>
           <Button onClick={onPay} className="w-full">
             Buy
+          </Button>
+          <Button
+          variant="blue"
+          onClick={() => {
+            Router.push("/connect")
+          }} className="w-full ">
+            Connect
           </Button>
         </div>
       </div>
