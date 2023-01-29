@@ -9,7 +9,8 @@ No-code Point of sale system for local merchants and shopkeepers to onboard user
 
 Features 
 
-Connect with phanto
+Connect using phantom wallet
+
 <img width="1280" alt="image" src="https://user-images.githubusercontent.com/96371303/215306356-72a8382c-4f32-4ec1-82a6-cbed7064e1b9.png">
 
  Coin-exchange to swap your crypto to sol tokens
