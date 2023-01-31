@@ -1,4 +1,4 @@
-# p2p-marketplace
+# P2P Marketplace build on Solana Blockchain
 
 ![building-store](https://user-images.githubusercontent.com/96371303/215303732-b95caef4-f19c-435f-a866-ebee3d091866.svg)
 
@@ -36,3 +36,14 @@ Payment QR code
 For merchant to add his product
 
 <img width="1280" alt="Screenshot 2023-01-29 103201" src="https://user-images.githubusercontent.com/96371303/215306290-0dce0664-7c59-47d6-89a7-729b08085a21.png">
+
+The Transfer request follows  this mechanism 
+
+![image](https://user-images.githubusercontent.com/95926324/215766384-940c1677-fcc7-4962-892e-a50e3419a86f.png)
+
+* Customer goes to the payment page
+* Merchant frontend (client) sends order information to the backend
+* Merchant backend (server) generates a reference public key and stores it in a database with the expected amount for the shopping cart / pending purchase (unique to each customer's checkout session).
+* Merchant backend redirects the user to the confirmation page with the generated reference public key.
+* The confirmation page redirects to the merchant with the transaction signature.
+* Merchant backend checks that the transaction is valid for the checkout session by validating the transaction with the reference and amount stored in step 3.
